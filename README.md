@@ -35,7 +35,7 @@ In order to start using BlazeMeter's API, you will need to setup 2 variables wit
 
 Example: `hubot bm set env http://a.blazemeter.com`
 
-- API Key (You can find this at: http://gilad.a.blazemeter.com/app/#settings/api-key)
+- API Key (You can find this at: http://a.blazemeter.com/app/#settings/api-key)
 
 Example: `hubot bm set api key ZdjX888gggjmJghA8vnU`
 
