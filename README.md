@@ -15,13 +15,13 @@ Required:
 
 ### Installation
 
-1. Install this npm package to your hubot repo:
+- Install this npm package to your hubot repo:
 
 ```bash
 $ npm install --save blazemeter-hubot
 ```
 
-2. Add `blazemeter-hubot` to your `external-scripts.json`
+- Add `blazemeter-hubot` to your `external-scripts.json`
 
 `hubot-blazemeter` requires a connection to redis to persist data.
 See [Hubot Redis Brain](https://github.com/hubot-scripts/hubot-redis-brain) for details.
