@@ -11,17 +11,17 @@ Required:
 
 - You will need to have a BlazeMeter account, or access to one. [Signup for one now!](https://blazemeter.com/#signup)
 - You will need to have a BlazeMeter Api Key
-- The environment will a.blazemeter.com (but configurable to any other env)
+- A workable environment (usually `https://a.blazemeter.com` but configurable to any other env)
 
 ### Installation
 
-- Install this npm package to your hubot repo
+1. Install this npm package to your hubot repo:
 
-```sh
+```bash
 $ npm install --save blazemeter-hubot
 ```
 
-- Add `blazemeter-hubot` to your `external-scripts.json`
+2. Add `blazemeter-hubot` to your `external-scripts.json`
 
 `hubot-blazemeter` requires a connection to redis to persist data.
 See [Hubot Redis Brain](https://github.com/hubot-scripts/hubot-redis-brain) for details.
@@ -32,12 +32,14 @@ See [Hubot Redis Brain](https://github.com/hubot-scripts/hubot-redis-brain) for 
 
 In order to start using BlazeMeter's API, you will need to setup 2 variables with Hubot:
 - Env endpoint (Usually `http://a.blazemeter.com`).
-
-Example: `hubot bm set env http://a.blazemeter.com`
-
 - API Key (You can find this at: http://a.blazemeter.com/app/#settings/api-key)
 
-Example: `hubot bm set api key ZdjX888gggjmJghA8vnU`
+Example workflow:
+
+```
+hubot bm set env http://a.blazemeter.com
+hubot bm set api key ZdjX888gggjmJghA8vnU
+```
 
 These are a list of `hubot-blazemeter` commands:
 
