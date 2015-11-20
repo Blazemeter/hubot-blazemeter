@@ -23,11 +23,6 @@ $ npm install --save blazemeter-hubot
 
 - Add `blazemeter-hubot` to your `external-scripts.json`
 
-`hubot-blazemeter` requires a connection to redis to persist data.
-See [Hubot Redis Brain](https://github.com/hubot-scripts/hubot-redis-brain) for details.
-
-(This usually means you will need to set `REDIS_URL` env variable)
-
 ### Usage
 
 In order to start using BlazeMeter's API, you will need to setup 2 variables with Hubot:
