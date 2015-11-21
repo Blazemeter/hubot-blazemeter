@@ -29,6 +29,15 @@ getUserFromBrain = (robot, res) ->
 exports.setRobot = (robot) ->
   @robot = robot
 
+exports.handleReset = (res) ->
+  user = getUserFromBrain @robot, res
+  return unless user
+
+  user.bmEnv = null
+  user.bmApiKey = null
+  @robot.brain.save()
+  res.reply "Your env and api key are reset"
+
 exports.handleSetEnv = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
@@ -71,7 +80,7 @@ exports.handleGetEnv = (res) ->
   unless user.bmEnv
     return res.reply "Your env is unset"
 
-  res.reply "You env is set to be #{user.bmEnv}"
+  res.reply "Your env is set to be #{user.bmEnv}"
 
 exports.handleError = (err, response, robotResponse) ->
   if err
@@ -89,7 +98,7 @@ exports.handleGetApiKey = (res) ->
   unless user.bmApiKey
     return res.reply "Your api key is unset"
 
-  res.reply "You api key is set to be #{user.bmApiKey}"
+  res.reply "Your api key is set to be #{user.bmApiKey}"
 
 exports.handleListRunning = (res) ->
   collection = res.match[1]
