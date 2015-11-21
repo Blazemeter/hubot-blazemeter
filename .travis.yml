@@ -2,5 +2,10 @@ sudo: false
 language: node_js
 node_js:
   - "stable"
+script:
+  - npm run test-coverage
+  - npm run cover
+after_success:
+  - npm run coveralls
 notifications:
   email: false
