@@ -5,6 +5,8 @@
 [![Build Status](https://travis-ci.org/Blazemeter/hubot-blazemeter.svg?branch=master)](https://travis-ci.org/Blazemeter/hubot-blazemeter)
 [![Coverage Status](https://coveralls.io/repos/Blazemeter/hubot-blazemeter/badge.svg?branch=master&service=github)](https://coveralls.io/github/Blazemeter/hubot-blazemeter?branch=master)
 
+![BlazeMeter Hubot](media/hubot.png)
+
 Hubot allows you to run [BlazeMeter](https://blazemeter.com/) commands using Hubot,
 which integrates with any leading chat clients (Knowingly HipChat, Slack, IRC, etc..)
 
