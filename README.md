@@ -23,10 +23,10 @@ Required:
 - Install this npm package to your hubot repo:
 
 ```bash
-$ npm install --save blazemeter-hubot
+$ npm install --save hubot-blazemeter
 ```
 
-- Add `blazemeter-hubot` to your `external-scripts.json`
+- Add `hubot-blazemeter` to your `external-scripts.json`
 
 ### Usage
 
