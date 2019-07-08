@@ -4,7 +4,7 @@ collections = ['tests', 'collections', 'masters', 'sessions']
 
 getRequestOptions = (apiKey, env, route, method = "GET") ->
   return {
-    url: "#{env}/api/latest/#{route}"
+    url: "#{env}/api/v4/#{route}"
     method: method
     headers: {
       'x-api-key': apiKey
