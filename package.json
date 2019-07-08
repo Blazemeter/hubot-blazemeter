@@ -33,5 +33,5 @@
     "test": "mocha --compilers coffee:coffee-script/register './tests/*.coffee'",
     "test-coverage": "npm test -- --require ./coffee-coverage.js"
   },
-  "version": "2.1.0"
+  "version": "2.2.0"
 }
