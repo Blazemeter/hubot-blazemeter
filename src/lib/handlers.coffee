@@ -26,10 +26,10 @@ isValidUser = (user) ->
 getUserFromBrain = (robot, res) ->
   robot.brain.userForId res.message.user.id
 
-exports.setRobot = (robot) ->
+setRobot = (robot) ->
   @robot = robot
 
-exports.handleReset = (res) ->
+handleReset = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -38,7 +38,7 @@ exports.handleReset = (res) ->
   @robot.brain.save()
   res.reply "Your env and api key are reset"
 
-exports.handleSetEnv = (res) ->
+handleSetEnv = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -47,7 +47,7 @@ exports.handleSetEnv = (res) ->
   @robot.brain.save()
   res.reply "Got it, I updated your env to be #{value}"
 
-exports.handleWhoami = (res) ->
+handleWhoami = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -64,7 +64,7 @@ exports.handleWhoami = (res) ->
     display = body.result.displayName
     res.reply "Successfully checked in with #{user.bmEnv}. Using #{display}."
 
-exports.handleSetApiKey = (res) ->
+handleSetApiKey = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -73,7 +73,7 @@ exports.handleSetApiKey = (res) ->
   @robot.brain.save()
   res.reply "Got it, I updated your api key to be #{value}"
 
-exports.handleGetEnv = (res) ->
+handleGetEnv = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -82,7 +82,7 @@ exports.handleGetEnv = (res) ->
 
   res.reply "Your env is set to be #{user.bmEnv}"
 
-exports.handleError = (err, response, robotResponse) ->
+handleError = (err, response, robotResponse) ->
   if err
     return robotResponse.reply "Something went terribly wrong"
 
@@ -91,7 +91,8 @@ exports.handleError = (err, response, robotResponse) ->
 
   robotResponse.reply "I don't know what to do. Tried to take over the world"
 
-exports.handleGetApiKey = (res) ->
+
+handleGetApiKey = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -100,7 +101,7 @@ exports.handleGetApiKey = (res) ->
 
   res.reply "Your api key is set to be #{user.bmApiKey}"
 
-exports.handleListRunning = (res) ->
+handleListRunning = (res) ->
   collection = res.match[1]
   unless collection in collections
     return res.reply "I'm not programmed to list #{collection}"
@@ -124,7 +125,7 @@ exports.handleListRunning = (res) ->
     else
       res.reply "There are no running #{collection}"
 
-exports.handleRunTest = (res) ->
+handleRunTest = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
@@ -143,7 +144,7 @@ exports.handleRunTest = (res) ->
 
     res.reply "Successfully launched the test with master #{body.result.id}"
 
-exports.handleStopTest = (res) ->
+handleStopTest = (res) ->
   test = res.match[1]
 
   user = getUserFromBrain @robot, res
@@ -162,7 +163,7 @@ exports.handleStopTest = (res) ->
 
     res.reply "Successfully sent the stop command"
 
-exports.handleListCollections = (res) ->
+handleListCollections = (res) ->
   collection = res.match[1]
   unless collection in collections
     return res.reply "I'm not programmed to list #{collection}"
@@ -182,3 +183,16 @@ exports.handleListCollections = (res) ->
     items = body.result
     idList = ("#{item.id} - #{item.name}" for item in items)
     res.reply idList.join '\n'
+
+exports.handleError = handleError
+exports.handleGetApiKey = handleGetApiKey
+exports.handleGetEnv = handleGetEnv
+exports.handleListCollections = handleListCollections
+exports.handleListRunning = handleListRunning
+exports.handleReset = handleReset
+exports.handleRunTest = handleRunTest
+exports.handleSetApiKey = handleSetApiKey
+exports.handleSetEnv = handleSetEnv
+exports.handleStopTest = handleStopTest
+exports.handleWhoami = handleWhoami
+exports.setRobot = setRobot
