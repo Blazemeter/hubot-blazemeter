@@ -31,6 +31,7 @@ $ npm install --save hubot-blazemeter
 ### Usage
 
 In order to start using BlazeMeter's API, you will need to setup 2 variables with Hubot:
+
 - Env endpoint (Usually `http://a.blazemeter.com`).
 - API Key (You can find this at: http://a.blazemeter.com/app/#settings/api-key)
 
@@ -38,7 +39,7 @@ Example workflow:
 
 ```
 hubot bm set env http://a.blazemeter.com
-hubot bm set api key ZdjX888gggjmJghA8vnU
+hubot bm set api key 12345:123123123123123
 ```
 
 These are a list of `hubot-blazemeter` commands:
@@ -48,7 +49,7 @@ These are a list of `hubot-blazemeter` commands:
 - `hubot bm whoami`
 
 - `hubot bm get api key`
-- `hubot bm set api key <apiKey>`
+- `hubot bm set api key <key_id>:<key_secret>`
 
 - `hubot bm get env`
 - `hubot bm set env <env>`

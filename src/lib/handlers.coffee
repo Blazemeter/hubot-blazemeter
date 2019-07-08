@@ -3,12 +3,14 @@ request = require 'request'
 collections = ['tests', 'collections', 'masters', 'sessions']
 
 getRequestOptions = (apiKey, env, route, method = "GET") ->
+  [ apiKeyId, apiKeySecret ] = apiKey.split ':'
   return {
-    url: "#{env}/api/v4/#{route}"
+    url: "#{env}/api/latest/#{route}"
     method: method
-    headers: {
-      'x-api-key': apiKey
-    },
+    auth: {
+      user: apiKeyId
+      password: apiKeySecret
+    }
     json: true
   }
 
