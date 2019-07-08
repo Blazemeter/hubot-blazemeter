@@ -56,8 +56,8 @@ These are a list of `hubot-blazemeter` commands:
 
 #### Listing
 
-- `hubot bm list (tests|collections|masters|sessions)`
-- `hubot bm list running (tests|collections|masters|sessions)`
+- `hubot bm list (tests|masters|sessions)`
+- `hubot bm list running (tests|masters|sessions)`
 
 #### Using
 

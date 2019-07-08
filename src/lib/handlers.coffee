@@ -4,7 +4,7 @@ collections = ['tests', 'collections', 'masters', 'sessions']
 
 getRequestOptions = (apiKeyId, apiKeySecret, env, route, method = "GET") ->
   return {
-    url: "#{env}/api/latest/#{route}"
+    url: "#{env}/api/v4/#{route}"
     method: method
     auth: {
       user: apiKeyId
