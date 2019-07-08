@@ -43,7 +43,7 @@ module.exports = (robot) ->
   robot.respond /bm list (\w+)$/i, handlers.handleListCollections
   robot.respond /bm list running (\w+)$/i, handlers.handleListRunning
   robot.respond /bm run test (\w+)$/i, handlers.handleRunTest
-  robot.respond /bm set api key (\w+)$/i, handlers.handleSetApiKey
+  robot.respond /bm set api key (\w+):(\w+)$/i, handlers.handleSetApiKey
   robot.respond /bm set env ([^\s]+)$/i, handlers.handleSetEnv
   robot.respond /bm stop test (\w+)$/i, handlers.handleStopTest
   robot.respond /bm whoami$/i, handlers.handleWhoami

@@ -2,8 +2,7 @@ request = require 'request'
 
 collections = ['tests', 'collections', 'masters', 'sessions']
 
-getRequestOptions = (apiKey, env, route, method = "GET") ->
-  [ apiKeyId, apiKeySecret ] = apiKey.split ':'
+getRequestOptions = (apiKeyId, apiKeySecret, env, route, method = "GET") ->
   return {
     url: "#{env}/api/latest/#{route}"
     method: method
@@ -15,13 +14,13 @@ getRequestOptions = (apiKey, env, route, method = "GET") ->
   }
 
 runRequest = (user, route, method, cb) ->
-  options = getRequestOptions user.bmApiKey, user.bmEnv, route
+  options = getRequestOptions user.bmApiKeyId, user.bmApiKeySecret, user.bmEnv, route
   request.get options, cb
 
 isValidUser = (user) ->
   unless user.bmEnv
     return "You have not set your blazemeter env"
-  unless user.bmApiKey
+  unless user.bmApiKeyId and user.bmApiKeySecret
     return "You have not set your blazemeter api-key"
   return true
 
@@ -36,7 +35,9 @@ handleReset = (res) ->
   return unless user
 
   user.bmEnv = null
-  user.bmApiKey = null
+  user.bmApiKeyId = null
+  user.bmApiKeySecret = null
+
   @robot.brain.save()
   res.reply "Your env and api key are reset"
 
@@ -70,10 +71,14 @@ handleSetApiKey = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
-  value = res.match[1]
-  user.bmApiKey = value
+  bmApiKeyId = res.match[1]
+  bmApiKeySecret = res.match[2]
+
+  user.bmApiKeyId = bmApiKeyId
+  user.bmApiKeySecret = bmApiKeySecret
+
   @robot.brain.save()
-  res.reply "Got it, I updated your api key to be #{value}"
+  res.reply "Got it, I updated your BlazeMeter Api Key Id to #{bmApiKeyId}"
 
 handleGetEnv = (res) ->
   user = getUserFromBrain @robot, res
@@ -98,10 +103,10 @@ handleGetApiKey = (res) ->
   user = getUserFromBrain @robot, res
   return unless user
 
-  unless user.bmApiKey
+  unless user.bmApiKeyId or user.bmApiKeySecret
     return res.reply "Your api key is unset"
 
-  res.reply "Your api key is set to be #{user.bmApiKey}"
+  res.reply "Your api key id is set to be #{user.bmApiKeyId}"
 
 handleListRunning = (res) ->
   collection = res.match[1]
